@@ -11,11 +11,11 @@ beforeEach(() => {
 });
 
 describe('Test Change color button functionality', () => {
-  test('button has the correct initial color', () => {
+  it('button has the correct initial color', () => {
     expect(colorButton).toHaveStyle({ backgroundColor: 'red' });
   });
 
-  test('button turns blue when clicked', () => {
+  it('button turns blue when clicked', () => {
     expect(colorButton).toHaveStyle({ backgroundColor: 'red' });
 
     fireEvent.click(colorButton);
@@ -33,5 +33,13 @@ describe('Test checkbox toggles button', () => {
 
   it('that the checkbox starts unchecked', () => {
     expect(checkbox).not.toBeChecked();
+  });
+
+  it('that the checkbox switches button from enabled to disabled and viceversa', () => {
+    fireEvent.click(checkbox);
+    expect(colorButton).toBeDisabled();
+
+    fireEvent.click(checkbox);
+    expect(colorButton).toBeEnabled();
   });
 });
