@@ -36,10 +36,13 @@ describe('Test checkbox toggles button', () => {
   });
 
   it('that the checkbox switches button from enabled to disabled and viceversa', () => {
-    fireEvent.click(checkbox);
+    const checkboxOne = screen.getByRole('checkbox', {
+      name: 'Disable button',
+    });
+    fireEvent.click(checkboxOne);
     expect(colorButton).toBeDisabled();
 
-    fireEvent.click(checkbox);
+    fireEvent.click(checkboxOne);
     expect(colorButton).toBeEnabled();
   });
 });
