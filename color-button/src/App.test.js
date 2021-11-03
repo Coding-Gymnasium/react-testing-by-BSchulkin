@@ -3,11 +3,15 @@ import App from './App';
 
 let colorButton;
 let checkbox;
+let checkboxOne;
 
 beforeEach(() => {
   render(<App />);
   colorButton = screen.getByRole('button', { name: 'Change to blue' });
   checkbox = screen.getByRole('checkbox');
+  checkboxOne = screen.getByRole('checkbox', {
+    name: 'Disable button',
+  });
 });
 
 describe('Test Change color button functionality', () => {
@@ -36,13 +40,18 @@ describe('Test checkbox toggles button', () => {
   });
 
   it('that the checkbox switches button from enabled to disabled and viceversa', () => {
-    const checkboxOne = screen.getByRole('checkbox', {
-      name: 'Disable button',
-    });
     fireEvent.click(checkboxOne);
     expect(colorButton).toBeDisabled();
 
     fireEvent.click(checkboxOne);
     expect(colorButton).toBeEnabled();
+  });
+
+  it('Checkbox changes button color to gray when disabled and to blue when enabled', () => {
+    fireEvent.click(checkboxOne);
+    expect(colorButton).toHaveStyle({ backgroundColor: 'gray' });
+
+    fireEvent.click(checkboxOne);
+    expect(colorButton).toHaveStyle({ backgroundColor: 'blue' });
   });
 });
