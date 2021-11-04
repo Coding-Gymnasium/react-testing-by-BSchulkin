@@ -48,10 +48,23 @@ describe('Test checkbox toggles button', () => {
   });
 
   it('Checkbox changes button color to gray when disabled and to blue when enabled', () => {
+    fireEvent.click(colorButton);
+    expect(colorButton).toHaveStyle({ backgroundColor: 'blue' });
+
     fireEvent.click(checkboxOne);
     expect(colorButton).toHaveStyle({ backgroundColor: 'gray' });
 
     fireEvent.click(checkboxOne);
     expect(colorButton).toHaveStyle({ backgroundColor: 'blue' });
+  });
+
+  it('Checkbox changes button color to gray when disabled and to red when enabled', () => {
+    expect(colorButton).toHaveStyle({ backgroundColor: 'red' });
+
+    fireEvent.click(checkboxOne);
+    expect(colorButton).toHaveStyle({ backgroundColor: 'gray' });
+
+    fireEvent.click(checkboxOne);
+    expect(colorButton).toHaveStyle({ backgroundColor: 'red' });
   });
 });

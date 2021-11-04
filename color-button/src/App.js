@@ -7,20 +7,13 @@ function App() {
 
   const newButtonColor = buttonColor === 'red' ? 'blue' : 'red';
 
-  /*
-   * if button red check goes to gray uncheck goes red
-   * if button blue check goes to gray uncheck goes blue
-   */
-
-  const checkboxToggleColor = () => {
-    if (buttonColor === 'red' || 'blue') setButtonColor('gray');
-    if (buttonColor === 'gray') setButtonColor('blue');
-  };
-
   return (
     <div>
       <button
-        style={{ backgroundColor: buttonColor, color: '#fff' }}
+        style={{
+          backgroundColor: disabled ? 'gray' : buttonColor,
+          color: '#fff',
+        }}
         onClick={() => setButtonColor(newButtonColor)}
         disabled={disabled}
       >
@@ -33,7 +26,6 @@ function App() {
         aria-checked={disabled}
         onChange={(e) => {
           setDisabled(e.target.checked);
-          setButtonColor(checkboxToggleColor);
         }}
       />
       <label htmlFor="disable-button-checkbox">Disable button</label>
