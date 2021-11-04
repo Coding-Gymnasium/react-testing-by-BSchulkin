@@ -1,5 +1,5 @@
 import { fireEvent, render, screen } from '@testing-library/react';
-import App from './App';
+import App, { replaceCamelWithSpaces } from './App';
 
 let colorButton;
 let checkbox;
@@ -66,5 +66,19 @@ describe('Test checkbox toggles button', () => {
 
     fireEvent.click(checkboxOne);
     expect(colorButton).toHaveStyle({ backgroundColor: 'red' });
+  });
+});
+
+describe('spaces before camel-case capital letters', () => {
+  it('Works for no inner capital letters', () => {
+    expect(replaceCamelWithSpaces('Red')).toBe('Red');
+  });
+
+  it('Works for one inner capital letter', () => {
+    expect(replaceCamelWithSpaces('MidnightBlue')).toBe('Midnight Blue');
+  });
+
+  it('Works for multiple inner capital letters', () => {
+    expect(replaceCamelWithSpaces('MediumVioletRed')).toBe('Medium Violet Red');
   });
 });
