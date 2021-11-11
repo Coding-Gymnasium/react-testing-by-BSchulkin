@@ -23,16 +23,16 @@ describe('Checkbox enables button', () => {
     render(<SummaryForm />);
 
     expect(tCButton).toBeDisabled();
-    fireEvent(checkbox);
+    fireEvent.click(checkbox);
     expect(tCButton).toBeEnabled();
   });
 
   it('Unchecking checkbox again disables button', () => {
     render(<SummaryForm />);
     expect(tCButton).toBeDisabled();
-    fireEvent(checkbox);
+    fireEvent.click(checkbox);
     expect(tCButton).toBeEnabled();
-    fireEvent(checkbox);
+    fireEvent.click(checkbox);
     expect(tCButton).toBeDisabled();
   });
 });
