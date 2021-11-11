@@ -1,4 +1,5 @@
-import { fireEvent, render, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { SummaryForm } from '../SummaryForm';
 
 let checkbox;
@@ -23,16 +24,22 @@ describe('Checkbox enables button', () => {
     render(<SummaryForm />);
 
     expect(tCButton).toBeDisabled();
-    fireEvent.click(checkbox);
+    userEvent.click(checkbox);
     expect(tCButton).toBeEnabled();
   });
 
   it('Unchecking checkbox again disables button', () => {
     render(<SummaryForm />);
     expect(tCButton).toBeDisabled();
-    fireEvent.click(checkbox);
+    userEvent.click(checkbox);
     expect(tCButton).toBeEnabled();
-    fireEvent.click(checkbox);
+    userEvent.click(checkbox);
     expect(tCButton).toBeDisabled();
   });
+});
+
+describe('popover responds to hover', () => {
+  it('popover starts out hidden', () => {});
+  it('popover appears upon mouseover of checkbox label', () => {});
+  it('popover disappears when we mouse out', () => {});
 });
