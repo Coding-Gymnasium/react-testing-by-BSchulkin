@@ -7,7 +7,7 @@ let tCButton;
 beforeEach(() => {
   render(<SummaryForm />);
   checkbox = screen.getByRole('checkbox', {
-    name: 'Terms and Conditions',
+    name: 'I agree to Terms and Conditions',
   });
   tCButton = screen.getByRole('button', { name: 'Confirm order' });
 });
