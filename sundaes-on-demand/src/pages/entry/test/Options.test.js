@@ -4,7 +4,7 @@ import Options from '../Options';
 
 describe('Tests Options module features', () => {
   it('can find the images', () => {
-    render(<Options optionType="scoopt" />);
+    render(<Options optionType="scoop" />);
 
     // find images
     const scoopImages = screen.getAllByRole('img', {
