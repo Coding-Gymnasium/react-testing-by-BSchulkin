@@ -15,7 +15,7 @@ export default function Options({ optionType }) {
       .catch(error => {
         // TODO: handle error response
       });
-  });
+  }, [optionType]);
 
   const ItemComponent = optionType === 'scoops' ? ScoopOption : null;
 

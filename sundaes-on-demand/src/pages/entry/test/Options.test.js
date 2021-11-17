@@ -3,11 +3,11 @@ import { render, screen } from '@testing-library/react';
 import Options from '../Options';
 
 describe('Tests Options module features', () => {
-  it('can find the images', () => {
-    render(<Options optionType="scoop" />);
+  it('can find the images', async () => {
+    render(<Options optionType="scoops" />);
 
     // find images
-    const scoopImages = screen.getAllByRole('img', {
+    const scoopImages = await screen.findAllByRole('img', {
       name: /scoop$/i,
     });
 
