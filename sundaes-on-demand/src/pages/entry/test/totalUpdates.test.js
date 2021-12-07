@@ -1,9 +1,14 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import Options from '../Options';
+import { OrderDetailsProvider } from '../../../context/OrderDetails';
 
 describe('update scoop subtotal when scoops change', () => {
-  render(<Options optionType="scoops" />);
+  beforeEach(() => {
+    render(<Options optionType="scoops" />, {
+      wrapper: OrderDetailsProvider,
+    });
+  });
 
   it('make sure total starts out $0.00', () => {
     const scoopsSubtotal = screen.getByText('Scoops total: $', {
@@ -14,6 +19,9 @@ describe('update scoop subtotal when scoops change', () => {
   });
 
   it('update vanilla scoops to 1 and check the subtotal', async () => {
+    const scoopsSubtotal = screen.getByText('Scoops total: $', {
+      exact: false,
+    });
     const vanillaInput = await screen.findByRole('spinbutton', {
       name: 'Vanilla',
     });
@@ -23,6 +31,9 @@ describe('update scoop subtotal when scoops change', () => {
   });
 
   it('update chocolate scoops to 2 and check subtotal', async () => {
+    const scoopsSubtotal = screen.getByText('Scoops total: $', {
+      exact: false,
+    });
     const chocolateInput = await screen.findByRole('spinbutton', {
       name: 'Chocolate',
     });

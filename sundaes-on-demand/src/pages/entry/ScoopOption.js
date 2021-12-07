@@ -25,7 +25,7 @@ export default function ScoopOption({
         <Form.Label column xs="6" style={{ textAlign: 'right' }}>
           {name}
         </Form.Label>
-        <Col xs="S" style={{ textAlign: 'left' }}>
+        <Col xs="5" style={{ textAlign: 'left' }}>
           <Form.Control
             type="number"
             defaultValue={0}

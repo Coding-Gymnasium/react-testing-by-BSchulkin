@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
-import axios from 'axios';
 
+import axios from 'axios';
 import Row from 'react-bootstrap/Row';
+
 import ScoopOption from '../entry/ScoopOption';
 import ToppingOption from './ToppingOption';
 import AlertBanner from '../common/AlertBanner';
@@ -48,7 +49,7 @@ export default function Options({ optionType }) {
       <h2>{title}</h2>
       <p>{pricePerItem[optionType]} each</p>
       <p>
-        {total} total: {orderDetails.totals[optionType]}
+        {title} total: {orderDetails.totals[optionType]}
       </p>
       <Row>{optionItems}</Row>
     </>
