@@ -10,12 +10,16 @@ describe('update scoop subtotal when scoops change', () => {
     });
   });
 
-  it('make sure total starts out $0.00', () => {
+  it('make sure total starts out $0.00', async () => {
     const scoopsSubtotal = screen.getByText('Scoops total: $', {
       exact: false,
     });
 
     expect(scoopsSubtotal).toHaveTextContent('0.00');
+
+    await screen.findByRole('spinbutton', {
+      name: 'Vanilla',
+    });
   });
 
   it('update vanilla scoops to 1 and check the subtotal', async () => {
